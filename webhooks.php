@@ -1,5 +1,5 @@
 <?php
-
-echo '<pre>';
-print_r($_REQUEST);
-die;
+echo $_REQUEST['hub_challenge'];
+// echo '<pre>';
+// print_r($_REQUEST);
+// die;

@@ -16,7 +16,7 @@ $heads = [];
 
 $string = 'meatyhamhock';
 $key = '9b3fde7da7c49db2bac93c73ea258868';
-$signature = urlencode(base64_encode(hash_hmac('sha1', $string , $key, true)));
+$signature = hash_hmac('sha1', $string , $key);
 $heads['sha1'] = $signature;
 // print_r($signature);
 

@@ -14,6 +14,12 @@ file_put_contents('newfile.txt', $encodedString);
 $headers = apache_request_headers();
 $heads = [];
 
+$string = 'meatyhamhock';
+$key = '9b3fde7da7c49db2bac93c73ea258868';
+$signature = urlencode(base64_encode(hash_hmac('sha1', $string , $key, true)));
+$heads['sha1'] = $signature;
+// print_r($signature);
+
 
 foreach ($headers as $header => $value) {
     $heads[$header] = $value;

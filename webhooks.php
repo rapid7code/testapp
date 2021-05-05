@@ -12,8 +12,20 @@ $encodedString = $json;//json_encode($array);
 file_put_contents('newfile.txt', $encodedString);
 
 $headers = apache_request_headers();
+$heads = [];
 
-file_put_contents('newfile.txt', $headers);
+
+foreach ($headers as $header => $value) {
+    $heads[][$header] = $value;
+    // if($header == 'X-Hub-Signature'){
+    //     if($value == 'sha1=meatyhamhock'){
+    //         continue;
+    //     }
+    // }
+    // echo "$header: $value <br />\n";
+}
+
+file_put_contents('newfile.txt', $heads);
 
 //Retrieve the data from our text file.
 $fileContents = file_get_contents('newfile.txt');

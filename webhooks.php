@@ -14,7 +14,6 @@ file_put_contents('newfile.txt', $encodedString);
 $headers = apache_request_headers();
 $heads = [];
 
-$string = 'meatyhamhock';
 $key = '9b3fde7da7c49db2bac93c73ea258868';
 $signature = hash_hmac('sha1', $json , $key);
 $heads['sha1'] = $signature;
@@ -22,7 +21,7 @@ $heads['sha1'] = $signature;
 
 
 foreach ($headers as $header => $value) {
-    $heads[$header] = $value;
+    $heads['header'][$header] = $value;
     // if($header == 'X-Hub-Signature'){
     //     if($value == 'sha1=meatyhamhock'){
     //         continue;
@@ -30,6 +29,8 @@ foreach ($headers as $header => $value) {
     // }
     // echo "$header: $value <br />\n";
 }
+
+$heads['json'] = $json;
 
 file_put_contents('newfile.txt', json_encode($heads));
 

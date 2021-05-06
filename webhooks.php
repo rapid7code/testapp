@@ -5,12 +5,6 @@ echo 'Get From POSTMAN: <br/>';
 // Takes raw data from the request
 $json = file_get_contents('php://input');
 
-//Encode the array into a JSON string.
-$encodedString = $json;//json_encode($array);
-
-//Save the JSON string to a text file.
-file_put_contents('newfile.txt', $encodedString);
-
 $headers = apache_request_headers();
 $heads = [];
 
@@ -30,7 +24,7 @@ foreach ($headers as $header => $value) {
     // echo "$header: $value <br />\n";
 }
 
-$heads['json'] = $json;
+$heads['json'] = json_decode($json, true);
 
 file_put_contents('newfile.txt', json_encode($heads));
 
